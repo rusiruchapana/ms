@@ -2,7 +2,9 @@ package com.em.departmentservice.dto;
 
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
 
+@Data
 public class DepartmentRequestDTO {
 
     @NotBlank(message = "Department Name Required.")

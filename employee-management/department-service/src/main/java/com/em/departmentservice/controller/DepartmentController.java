@@ -4,7 +4,9 @@ import com.em.departmentservice.dto.DepartmentRequestDTO;
 import com.em.departmentservice.dto.DepartmentResponseDTO;
 import com.em.departmentservice.service.DepartmentService;
 import jakarta.validation.Valid;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/departments")
-@RequiredArgsConstructor
 public class DepartmentController {
 
-    private final DepartmentService departmentService;
+    @Autowired
+    private DepartmentService departmentService;
 
     @PostMapping
-    public ResponseEntity<DepartmentResponseDTO> createDepartmentController(@Valid @RequestBody DepartmentRequestDTO departmentRequestDTO){
+    public ResponseEntity<DepartmentResponseDTO> createDepartmentController(@RequestBody DepartmentRequestDTO departmentRequestDTO){
         DepartmentResponseDTO createdDepartment = departmentService.createDepartmentService(departmentRequestDTO);
         return new ResponseEntity<>(createdDepartment, HttpStatus.CREATED);
     }

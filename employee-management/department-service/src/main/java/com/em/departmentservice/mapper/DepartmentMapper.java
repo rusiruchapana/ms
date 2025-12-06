@@ -4,10 +4,10 @@ import com.em.departmentservice.dto.DepartmentRequestDTO;
 import com.em.departmentservice.dto.DepartmentResponseDTO;
 import com.em.departmentservice.entity.Department;
 import org.mapstruct.Mapper;
-import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring")
 public interface DepartmentMapper {
     Department toEntity(DepartmentRequestDTO departmentRequestDTO);
+    Department toEntity(DepartmentResponseDTO departmentResponseDTO);
     DepartmentResponseDTO toDto(Department department);
 }
